@@ -9,14 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 
 public class SchoolService {
     final SchoolRepository schoolRepository;
+    private final StudentService studentService;
 
-    public SchoolService(SchoolRepository schoolRepository) {
-        this.schoolRepository = schoolRepository;
-    }
+//    public SchoolService(SchoolRepository schoolRepository, StudentService studentService) {
+//        this.schoolRepository = schoolRepository;
+//        this.studentService = studentService;
+//    }
 
     public void saveSchool(School school){
         schoolRepository.save(school);
@@ -36,7 +38,10 @@ public class SchoolService {
                                         .email("NOT_FOUND")
                                         .build()
                         );
-        var students = 0;
-        return null;
+        var students = studentService.findAllStudentsBySchool(schoolId);
+        return FullSchoolResponse.builder()
+                .name(school.getName())
+                .email(school.getEmail())
+                .studentList(students).build();
     }
 }

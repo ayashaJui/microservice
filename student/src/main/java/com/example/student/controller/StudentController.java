@@ -11,13 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/students")
-
+@RequiredArgsConstructor
 public class StudentController {
     private final StudentService studentService;
 
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
+//    public StudentController(StudentService studentService) {
+//        this.studentService = studentService;
+//    }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)

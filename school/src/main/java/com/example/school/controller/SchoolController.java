@@ -13,13 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/schools")
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class SchoolController {
     private final SchoolService schoolService;
 
-    public SchoolController(SchoolService schoolService) {
-        this.schoolService = schoolService;
-    }
+//    public SchoolController(SchoolService schoolService) {
+//        this.schoolService = schoolService;
+//    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
